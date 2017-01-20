@@ -76,26 +76,22 @@ static NSString *const ID=@"OrderCellID";
     return _contentScrollView;
 }
 
+-(void)updateUI{
+    self.swithView.frame=CGRectMake(0, 0, KDeviceWidth, 40);
+    self.contentScrollView.frame =CGRectMake(0,self.swithView.height+self.swithView.y, self.view.width, self.view.height -self.swithView.height);
+    //注册cell
+    [self.contentScrollView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ID];
+    self.contentScrollView.backgroundColor = self.view.backgroundColor;
+    
+    [self.swithView selectedIndex:0];
+    
+    [self.contentScrollView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+}
 #pragma mark -----控制器view生命周期方法-----
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     //初始selectIndex 设置视图frame
     self.selectIndex=-1;
-    self.swithView.frame=CGRectMake(0, 0, KDeviceWidth, 40);
-    self.contentScrollView.frame =CGRectMake(0,40, self.view.width, self.view.height -40);
-     [self.swithView selectedIndex:0];
-}
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    //注册cell
-    [self.contentScrollView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ID];
-    self.contentScrollView.backgroundColor = self.view.backgroundColor;
-
-}
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
- 
-    
 }
 
 #pragma mark----------Method----------

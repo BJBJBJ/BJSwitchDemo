@@ -20,6 +20,8 @@
     
     [self initChildController];
     
+    [self updateUI];
+    
 }
 -(void)initChildController{
     

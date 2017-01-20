@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface BJSwitchController : UIViewController
+/**
+ 更新UI 初始化子控制器后调用
+ */
+-(void)updateUI;
 
 @end
 
